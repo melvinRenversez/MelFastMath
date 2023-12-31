@@ -120,14 +120,14 @@ footer button{
 .parametre .option{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 .parametre .option select{
     width: 70px;
     height: 30px;
     border-radius: 20px;
     border: none;
-    padding: 3px 10px;
+    padding: 0px 10px;
     font-size: 17px;
     outline: none;
     cursor: pointer;
@@ -139,6 +139,24 @@ footer button{
     background: #163a4f;
     border: 2px solid #d8d8d8;
     cursor: pointer;
+}
+.parametre .nombre{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.parametre .nombre select{
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    padding: 0px 9px;
+    font-size: 17px;
+    outline: none;
+    cursor: pointer;
+    background: #163a4f;
+    border: 2px solid #d8d8d8;
+    color: #d8d8d8;
 }
 .parametre .operation{
     display: flex;

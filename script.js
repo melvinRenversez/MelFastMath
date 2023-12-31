@@ -14,13 +14,22 @@ const autorisationMoin = document.getElementById('check-')
 const autorisationFois = document.getElementById('check*')
 const autorisationDiv = document.getElementById('check/')
 
-
 var nbr = []
 var operation = []
 
 var calculGenerer = false
 var resula
 var time
+
+console.log(selectValeurMax)
+
+var selectValeurMax = document.getElementById('valeurMax')
+for(i = 1; i < 101; i++){
+    let option = document.createElement('option')
+    option.value = 101 - i
+    option.text = 101 -i
+    selectValeurMax.add(option)
+}
 
 generer.addEventListener('click', ()=>{
     genererLesNombreEtOperation()
@@ -115,8 +124,9 @@ function genererLesNombreEtOperation(){
     nbr = []
     operation = []
     const nbrOperation = parseInt(select.value)
+    valueMax = selectValeurMax.value
     for(i = 0; i < nbrOperation + 1; i++){
-        nbr[i] = Math.floor(Math.random() * 100)
+        nbr[i] = Math.floor(Math.random() * valueMax)
     }
     for(i = 0; i < nbrOperation ; i++){
         x = Math.floor(Math.random() * 3)
