@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>MelFastMath</title>
+</head>
+<body>
+
+    <div class="notif " id="info">
+        <h1 class="good" id="info-text">
+            Vrai
+        </h1>
+    </div>
+
+    <div class="parametre hidden" id="menu">
+        <div class="option">
+            <h3>nombre de calculs</h3>
+            <select id="select">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="operation">
+            <h3>Operatin autorise</h3>
+            <div class="plus type-operation">
+                <span>Plus</span>
+                <input type="checkbox" id="check+" checked="on">
+            </div>
+            <div class="moin type-operation">
+                <span>Moin</span>
+                <input type="checkbox" id="check-" checked="on">
+            </div>
+            <div class="fois type-operation">
+                <span>fois</span>
+                <input type="checkbox" id="check*" checked="on">
+            </div>
+            <div class="divi type-operation">
+                <span>Divisé</span>
+                <input type="checkbox" id="check/" checked="on">
+            </div>
+        </div>
+        <p class="noRespect">
+            Ne respectez pas la priorité des opération.
+        </p>
+    </div>
+
+    
+    <div class="container">
+        <div class="menu">
+            <i class='bx bx-x icon ' id="menu-switch"></i>
+            <i class='bx bx-menu icon active' id="menu-switch"></i>
+        </div>
+        <header>
+            <h1>MelFastMath</h1>
+            <button id="generer">Génerer</button>
+        </header>
+        <div class="content">
+            <h1 id="calcul">Clique sur génerer</h1>
+        </div>
+        <footer>
+            <input type="number" placeholder="Réponse" id="reponse">
+            <button id="send">Envoyer</button>
+        </footer>
+    </div>
+
+</body>
+<script src="script.js"></script>
+</html>
