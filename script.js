@@ -23,6 +23,95 @@ var resula
 var time
 
 generer.addEventListener('click', ()=>{
+    genererLesNombreEtOperation()
+}) 
+
+
+send.addEventListener('click', ()=>{
+    verifierLaReponse()
+})
+
+
+menuValue = "close"
+menuSwitch.forEach(Switch => {
+    Switch.addEventListener('click', ()=>{
+        if(menuValue == "close"){
+            menuValue = "open"
+            menu.classList.remove('hidden')
+            open.classList.remove('active')
+            close.classList.add('active')
+        }else{
+            menuValue = "close"
+            menu.classList.add('hidden')
+            open.classList.add('active')
+            close.classList.remove('active')
+        }
+    })
+});
+
+document.addEventListener('keydown', (e)=>{
+    if(e.keyCode == "13"){
+        verifierLaReponse()
+    }
+})
+
+function verifierLaReponse(){
+    if(calculGenerer){
+        currentReponse = reponse.value
+        if(currentReponse != ""){
+            if(currentReponse == resula){
+                infoText.innerHTML = "Réponse vrai"
+                info.classList.add('affiche')
+                setTimeout(removeInfo, 3000)
+                setTimeout(genererLesNombreEtOperation, 3200)
+            }else{
+                infoText.innerHTML = "Réponse faux"
+                info.classList.add('affiche')
+                setTimeout(removeInfo, 3000)
+            }
+        }
+        reponse.value = ""
+    }
+}
+
+
+function calculerLeResultat(){
+    
+    const nbrOperation = parseInt(select.value)
+    var calcul = ""
+    for(i = 0; i < nbrOperation + 1; i++){
+        calcul += nbr[i] 
+        if(operation[i] != undefined){
+            calcul += operation[i]
+        }else{
+            calcul += " ="
+        }
+    }
+    textCalcul.innerHTML = calcul
+    resula  = nbr[0]
+    for(i = 0; i < nbrOperation + 1; i++){
+        if(operation[i] == " + "){  
+            resula += nbr[i+1]        
+        }
+        if(operation[i] == " - "){
+            resula -= nbr[i+1]
+        }
+        if(operation[i] == " * "){
+            resula *= nbr[i+1]
+        }
+        if(operation[i] == " / "){
+            resula /= nbr[i+1]
+        }
+    }
+
+
+    calculGenerer = true
+
+}
+
+
+function genererLesNombreEtOperation(){
+
     nbr = []
     operation = []
     const nbrOperation = parseInt(select.value)
@@ -31,7 +120,6 @@ generer.addEventListener('click', ()=>{
     }
     for(i = 0; i < nbrOperation ; i++){
         x = Math.floor(Math.random() * 3)
-        console.log("x " + x)
         if(x == 0 && autorisationPlus.checked){
             operation[i] = " + "            
         }else if(x == 0){
@@ -68,81 +156,10 @@ generer.addEventListener('click', ()=>{
             }
         }
     }
-    console.log(nbr)
-    console.log(operation)
-    var calcul = ""
-    for(i = 0; i < nbrOperation + 1; i++){
-        calcul += nbr[i] 
-        if(operation[i] != undefined){
-            calcul += operation[i]
-        }else{
-            calcul += " ="
-        }
-        console.log(calcul)
-    }
-    textCalcul.innerHTML = calcul
-    resula  = nbr[0]
-    for(i = 0; i < nbrOperation + 1; i++){
-        if(operation[i] == " + "){  
-            resula += nbr[i+1]        
-        }
-        if(operation[i] == " - "){
-            resula -= nbr[i+1]
-        }
-        if(operation[i] == " * "){
-            resula *= nbr[i+1]
-        }
-        if(operation[i] == " / "){
-            resula /= nbr[i+1]
-        }
-    }
-    console.log("resulta =", resula)
+    calculerLeResultat()
+}
 
-
-    calculGenerer = true
-}) 
-
-
-send.addEventListener('click', ()=>{
-
-    if(calculGenerer){
-        console.log('send')
-        currentReponse = reponse.value
-        if(currentReponse != ""){
-            console.log('reponse resevable')
-            if(currentReponse == resula){
-                infoText.innerHTML = "Vrai"
-                info.classList.add('affiche')
-                setTimeout(removeInfo, 3000)
-            }else{
-                infoText.innerHTML = "Faux"
-                info.classList.add('affiche')
-                setTimeout(removeInfo, 3000)
-            }
-        }
-        reponse.value = ""
-    }
-})
 
 function removeInfo(){
     info.classList.remove('affiche')
-    console.log('loop')
 }
-
-menuValue = "close"
-menuSwitch.forEach(Switch => {
-    Switch.addEventListener('click', ()=>{
-        console.log('click')
-        if(menuValue == "close"){
-            menuValue = "open"
-            menu.classList.remove('hidden')
-            open.classList.remove('active')
-            close.classList.add('active')
-        }else{
-            menuValue = "close"
-            menu.classList.add('hidden')
-            open.classList.add('active')
-            close.classList.remove('active')
-        }
-    })
-});
