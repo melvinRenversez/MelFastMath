@@ -11,6 +11,7 @@ body{
     align-items: center;
     justify-content: center;
     background: #154865;
+    overflow:hidden ;
 }
 .container{
     background: #306685;
