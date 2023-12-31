@@ -24,6 +24,11 @@ body{
     border-radius: 30px;
     color: #d8d8d8;
     position: relative;
+    box-shadow: 
+    10px 10px 10px#000,
+    -10px 10px 10px#000,
+    -10px -10px 10px#000,
+    10px -10px 10px#000;
 }
 header{
     display: flex;
@@ -158,6 +163,15 @@ footer button{
     display: flex;
     justify-content: center;
     margin-top: 18px;
+}
+.version{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.version span{
+    text-decoration: underline;
+    color: #0f0;
 }
 .hidden{
     opacity: 1;
